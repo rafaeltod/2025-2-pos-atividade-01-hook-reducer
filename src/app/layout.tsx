@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { TaskProvider } from "@/lib/taskContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Infoweb-Atividade",
-  description: "Atividade 1 do 2o bimestre com hook reducer e shadcnui",
+  title: "Gerenciador de Tarefas - Infoweb",
+  description: "Atividade 1 do 2º bimestre com hook reducer e shadcn/ui",
 };
 
 export default function RootLayout({
@@ -23,11 +24,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="pt-br">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <TaskProvider>
+          {children}
+        </TaskProvider>
       </body>
     </html>
   );
